@@ -11,10 +11,9 @@ class ListComponent extends Component
     use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
-    public $loading_message = "";
 
     public $listeners = [
-        "load_list" => "loadList"
+        "loadList" => "loadList"
     ];
 
     public $filter = [
@@ -24,12 +23,13 @@ class ListComponent extends Component
         "order_type" => "",
     ];
 
-    protected $updatesQueryString = ['page'];
+    public $loadingMessage;
+
+    public $confirmingDeleteId = false;
 
     public function loadList()
     {
-
-        $this->loading_message = "Loading Todos...";
+        $this->loadingMessage = "Loading Todos...";
 
         $query = [];
 
@@ -56,6 +56,24 @@ class ListComponent extends Component
         // Paginating
         $getTodoQuery = $getTodoQuery->paginate();
         $this->todos = $getTodoQuery->items();
+    }
+
+    public function confirmDelete($id)
+    {
+        $this->confirmingDeleteId = $id;
+    }
+
+    public function delete($id)
+    {
+        $todo = Todo::where('id',$id)->first();
+        if ($todo == null) {
+            return [];
+        }
+
+        $todo->delete();
+
+        $this->emitTo('todo-module-livewire.notification-component', 'flashMessage', 'error', 'Task deleted successfully.');
+        $this->emitTo('todo-module-livewire.list-component', 'loadList');
     }
 
     public function mount(){

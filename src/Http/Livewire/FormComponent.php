@@ -8,8 +8,7 @@ use MicroweberPackages\Modules\TodoModuleLivewire\Models\Todo;
 
 class FormComponent extends Component
 {
-
-    public $submit_btn_title = "Save Task";
+    public $submitBtnTitle = "Save Task";
     public $form = [
         "id" => NULL,
         "title" => "",
@@ -21,14 +20,10 @@ class FormComponent extends Component
         "edit" => "edit"
     ];
 
-    public function mount()
-    {
-
-    }
-
     public function edit($id)
     {
-        $this->submit_btn_title = "Update Task";
+        $this->submitBtnTitle = "Update Task";
+
         $todo = Todo::find($id);
         $this->form = $todo->toArray();
     }
@@ -58,10 +53,10 @@ class FormComponent extends Component
             $message = "Task updated successfully.";
         }
 
-        $this->submit_btn_title = "Save Task";
+        $this->submitBtnTitle = "Save Task";
 
-        $this->emitTo('todo-module-livewire.notification-component', 'flash_message', 'success', $message);
-        $this->emitTo('todo-module-livewire.list-component', 'load_list');
+        $this->emitTo('todo-module-livewire.notification-component', 'flashMessage', 'success', $message);
+        $this->emitTo('todo-module-livewire.list-component', 'loadList');
     }
 
     public function render()

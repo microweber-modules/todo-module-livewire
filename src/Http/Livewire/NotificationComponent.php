@@ -8,7 +8,7 @@ use Log;
 class NotificationComponent extends Component
 {
     public $listeners = [
-        "flash_message" => "flashMessage"
+        "flashMessage" => "flashMessage"
     ];
 
     public function flashMessage($type, $msg){

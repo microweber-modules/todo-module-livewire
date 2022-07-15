@@ -6,7 +6,7 @@
                 <label for="">Title</label>
                 <input type="text" class="form-control" wire:model="form.title" >
                 @error('title')
-                <label class="error">{{ $message }}</label>
+                <label class="error text-danger">{{ $message }}</label>
                 @enderror
             </div>
         </div>
@@ -16,7 +16,7 @@
                 <label for="">Description</label>
                 <textarea rows="3" class="form-control" wire:model="form.description" ></textarea>
                 @error('description')
-                <label class="error">{{ $message }}</label>
+                <label class="error text-danger">{{ $message }}</label>
                 @enderror
             </div>
         </div>
@@ -30,14 +30,14 @@
                     <option value="accomplished">Task Accomplished</option>
                 </select>
                 @error('status')
-                <label class="error">{{ $message }}</label>
+                <label class="error text-danger">{{ $message }}</label>
                 @enderror
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-md-12">
-                <button type="submit" class="btn btn-primary btn-md" >{{ $submit_btn_title }}</button>
+                <button type="submit" class="btn btn-primary btn-md" >{{ $submitBtnTitle }}</button>
             </div>
         </div>
     </form>
