@@ -28,7 +28,7 @@ class TodoModuleLivewireServiceProvider extends ServiceProvider
     public function boot()
     {
         Livewire::component('todo-module-livewire', TodoListComponent::class);
-        View::addNamespace('todo-module-livewire', normalize_path((__DIR__) . '/resources/views'));
+        View::addNamespace('todo-module-livewire', normalize_path((__DIR__) . '/resources/views/livewire'));
 
     }
 

@@ -11,7 +11,7 @@ $config['author'] = "Microweber";
 $config['categories'] = "admin";
 
 // Version of your module
-$config['version'] = 0.1;
+$config['version'] = 0.2;
 
 // Show module in Admin Panel
 $config['ui_admin'] = true;

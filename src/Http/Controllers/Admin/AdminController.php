@@ -7,6 +7,6 @@ class AdminController extends \MicroweberPackages\App\Http\Controllers\AdminCont
 {
     public function index(Request $request)
     {
-        return $this->view('todo-module-livewire::admin.index');
+        return $this->view('todo-module-livewire::admin.todo.index');
     }
 }
