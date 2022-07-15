@@ -5,7 +5,7 @@ namespace MicroweberPackages\Modules\TodoModuleLivewire\Http\Livewire;
 use Livewire\Component;
 use MicroweberPackages\Modules\TodoModuleLivewire\Models\Todo;
 
-class TodoListComponent extends Component
+class ListComponent extends Component
 {
     public $objects = [];
 

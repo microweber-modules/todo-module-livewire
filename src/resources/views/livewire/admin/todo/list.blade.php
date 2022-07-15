@@ -85,7 +85,7 @@
                         <td>
                             <div>
                                 <p><strong>Title:</strong> {{ $v["title"] }}</p>
-                                <p><strong>Description:</strong> {{ $v["desc"] }}</p>
+                                <p><strong>Description:</strong> {{ $v["description"] }}</p>
                             </div>
                         </td>
                         <td>
@@ -98,7 +98,7 @@
                             @endif
                         </td>
                         <td>
-                            <button type="button" class="btn btn-info" wire:click="$emitTo('todo.form-component', 'edit', {{ $v['todo_id'] }})" >Edit</button>
+                            <button type="button" class="btn btn-info" wire:click="$emitTo('todo.form-component', 'edit', {{ $v['id'] }})" >Edit</button>
                             <button type="button" class="btn btn-danger" >Remove</button>
                         </td>
                     </tr>

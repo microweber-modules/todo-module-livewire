@@ -4,7 +4,9 @@ namespace MicroweberPackages\Modules\TodoModuleLivewire;
 use Livewire\Livewire;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use MicroweberPackages\Modules\TodoModuleLivewire\Http\Livewire\TodoListComponent;
+use MicroweberPackages\Modules\TodoModuleLivewire\Http\Livewire\FormComponent;
+use MicroweberPackages\Modules\TodoModuleLivewire\Http\Livewire\ListComponent;
+use MicroweberPackages\Modules\TodoModuleLivewire\Http\Livewire\NotificationComponent;
 
 class TodoModuleLivewireServiceProvider extends ServiceProvider
 {
@@ -27,7 +29,9 @@ class TodoModuleLivewireServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Livewire::component('todo-module-livewire', TodoListComponent::class);
+        Livewire::component('todo-module-livewire.list-component', ListComponent::class);
+        Livewire::component('todo-module-livewire.todo-notification-component', NotificationComponent::class);
+        Livewire::component('todo-module-livewire.form-component', FormComponent::class);
         View::addNamespace('todo-module-livewire', normalize_path((__DIR__) . '/resources/views/livewire'));
 
     }
