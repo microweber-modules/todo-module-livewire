@@ -1,9 +1,9 @@
 <?php
 namespace MicroweberPackages\Modules\TodoModuleLivewire;
 
+use Livewire\Livewire;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Livewire\Livewire;
 use MicroweberPackages\Modules\TodoModuleLivewire\Http\Livewire\TodoListComponent;
 
 class TodoModuleLivewireServiceProvider extends ServiceProvider
