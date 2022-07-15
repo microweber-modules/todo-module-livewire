@@ -1,0 +1,17 @@
+{
+  "name": "microweber-modules/todo-module-livewire",
+  "description": "Todo (Livewire Module)",
+  "license": "MIT",
+  "homepage": "https://microweber.org/modules/microweber-modules/todo-module-livewire",
+  "authors": [
+    {
+      "name": "Bozhidar Slaveykov",
+      "email": "bobi@microweber.com"
+    }
+  ],
+  "keywords": [
+    "todo-module-livewire"
+  ],
+  "type": "microweber-module",
+  "target-dir": "todo-module-livewire"
+}
