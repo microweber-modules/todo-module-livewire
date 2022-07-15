@@ -1,3 +1,3 @@
-# TODO MODULE LIVEWIRE
+# Todo Module on Laravel Livewire
 
-Here is an example of Microweber Livewire Module
+Here is an example of Microweber Laravel Livewire Module
