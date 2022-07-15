@@ -2,7 +2,7 @@
 $config = array();
 
 // Name of you module
-$config['name'] = "Todo Module Livewire";
+$config['name'] = "Todo";
 
 // Author name
 $config['author'] = "Microweber";
