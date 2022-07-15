@@ -3,9 +3,6 @@
 namespace MicroweberPackages\Modules\TodoModuleLivewire\Http\Livewire;
 
 use Livewire\Component;
-use Log;
-use DB;
-use Exception;
 use MicroweberPackages\Modules\TodoModuleLivewire\Http\Requests\TodoFormRequest;
 use MicroweberPackages\Modules\TodoModuleLivewire\Models\Todo;
 
@@ -24,58 +21,47 @@ class FormComponent extends Component
         "edit" => "edit"
     ];
 
-    public function mount(){
+    public function mount()
+    {
 
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $this->submit_btn_title = "Update Task";
         $todo = Todo::find($id);
         $this->form = $todo->toArray();
     }
 
-    public function save(){
-
+    public function save()
+    {
         $form = new TodoFormRequest();
         $form->merge($this->form);
-        $validated_data = $form->validate($form->rules());
+        $validatedData = $form->validate($form->rules());
 
-
-    $query = [
-        "title" => $validated_data["title"],
-        "description" => $validated_data["description"],
-        "status" => $validated_data["status"],
-    ];
-
-        if (isset($validated_data["id"]) && $validated_data["id"] > 0) {
-       //     $info["todo"] = Todo::update($query);
+        $isNewTask = false;
+        if (isset($validatedData["id"]) && $validatedData["id"] > 0) {
+           $todoModel = Todo::where('id', $validatedData['id'])->first();
         } else {
-            $info["todo"] = Todo::create($query);
+           $todoModel = new Todo();
+           $isNewTask = true;
         }
 
+        $todoModel->title = $validatedData['title'];
+        $todoModel->description = $validatedData['description'];
+        $todoModel->status = $validatedData['status'];
+        $todoModel->save();
 
-
-        $info['success'] = TRUE;
-
-
-        if($info["success"]){
-            $type = "success";
-            if($info["todo"]->wasRecentlyCreated){
-                $message = "New Task created successfully.";
-            }else{
-                $message = "Task updated successfully.";
-            }
-
-            $this->submit_btn_title = "Save Task";
-
-        }else{
-            $type = "error";
-            $message = "Something went wrong while saving task.";
+        if ($isNewTask) {
+            $message = "New Task created successfully.";
+        } else {
+            $message = "Task updated successfully.";
         }
 
-        $this->emitTo('todo.todo-notification-component', 'flash_message', $type, $message);
+        $this->submit_btn_title = "Save Task";
 
-        $this->emitTo('todo.list-component', 'load_list');
+        $this->emitTo('todo-module-livewire.notification-component', 'flash_message', 'success', $message);
+        $this->emitTo('todo-module-livewire.list-component', 'load_list');
     }
 
     public function render()

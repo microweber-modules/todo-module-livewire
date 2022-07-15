@@ -1,15 +1,13 @@
 <div>
     @if(session()->has('success'))
-        <div class="alert alert-success alert-dismissible fade show">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            {{ session('success') }}
-        </div>
+        <script>
+            mw.notification.success('{{ session('success') }}');
+        </script>
     @endif
 
     @if(session()->has('error'))
-        <div class="alert alert-error alert-dismissible fade show">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            {{ session('error') }}
-        </div>
+       <script>
+           mw.notification.error('{{ session('error') }}');
+       </script>
     @endif
 </div>
