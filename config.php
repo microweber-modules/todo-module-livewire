@@ -1,16 +1,30 @@
 <?php
 $config = array();
+
+// Name of you module
 $config['name'] = "Todo Module Livewire";
+
+// Author name
 $config['author'] = "Microweber";
 
+// Custom category
 $config['categories'] = "admin";
-$config['version'] = 0.1; // Version of your module
-$config['ui_admin'] = true; // True if you want to show your module on admin
-$config['ui'] = false; // True if you want to show your module in live-edit modules
-$config['position'] = 1; // Position of you module
+
+// Version of your module
+$config['version'] = 0.1;
+
+// Show module in Admin Panel
+$config['ui_admin'] = true;
+
+// Show module in Live-Edit
+$config['ui'] = false;
+
+// Position of you module
+$config['position'] = 1;
 
 $config['settings'] = [];
 
+// Here is the index route for admin panel
 $config['settings']['routes'] = [
     'admin'=>'admin.todo-module-livewire.index'
 ];
