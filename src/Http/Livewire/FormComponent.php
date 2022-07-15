@@ -6,7 +6,7 @@ use Livewire\Component;
 use Log;
 use DB;
 use Exception;
-use MicroweberPackages\Modules\TodoModuleLivewire\Http\Requests\TodoModuleLivewireFormRequest;
+use MicroweberPackages\Modules\TodoModuleLivewire\Http\Requests\TodoFormRequest;
 use MicroweberPackages\Modules\TodoModuleLivewire\Models\Todo;
 
 class FormComponent extends Component
@@ -36,7 +36,7 @@ class FormComponent extends Component
 
     public function save(){
 
-        $form = new TodoModuleLivewireFormRequest();
+        $form = new TodoFormRequest();
         $form->merge($this->form);
         $validated_data = $form->validate($form->rules());
 

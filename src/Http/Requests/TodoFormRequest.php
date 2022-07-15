@@ -3,7 +3,7 @@ namespace MicroweberPackages\Modules\TodoModuleLivewire\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TodoModuleLivewireFormRequest extends FormRequest
+class TodoFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

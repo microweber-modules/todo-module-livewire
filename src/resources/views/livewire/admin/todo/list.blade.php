@@ -4,11 +4,13 @@
         .table p{
             margin: 0;
         }
-
         .filter-container{
             margin-bottom: 15px;
-            padding: 15px 10px;
-            background: #ffc107;
+            padding: 15px;
+            padding-left:20px;
+            background: #f5f5f5;
+            color: #242424;
+            border-radius: 4px;
         }
 
         .filter-container > .row{
@@ -23,7 +25,6 @@
     <div wire:loading wire:init="loadList" >
         {{ $loading_message }}
     </div>
-
 
     <div class="filter-container">
         <h2>Filter</h2>
@@ -98,7 +99,7 @@
                             @endif
                         </td>
                         <td>
-                            <button type="button" class="btn btn-info" wire:click="$emitTo('todo.form-component', 'edit', {{ $v['id'] }})" >Edit</button>
+                            <button type="button" class="btn btn-info" wire:click="$emitTo('todo-module-livewire.form-component', 'edit', {{ $v['id'] }})" >Edit</button>
                             <button type="button" class="btn btn-danger" >Remove</button>
                         </td>
                     </tr>
@@ -107,7 +108,7 @@
                 <tr>
                     <td colspan="4" class="text-center" >No Tasks found.</td>
                 </tr>
-            @endif
+            @endif 
             </tbody>
         </table>
     </div>
