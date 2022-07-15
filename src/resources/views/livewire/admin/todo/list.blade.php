@@ -22,7 +22,7 @@
         }
     </style>
 
-    <div wire:loading wire:init="loadList">
+    <div wire:loading wire:init="render">
         {{ $loadingMessage }}
     </div>
 
@@ -123,7 +123,7 @@
 
 
     <div class="pagination-container">
-
+        {{ $todos->links() }}
     </div>
 
 </div>

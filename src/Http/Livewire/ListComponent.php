@@ -12,9 +12,7 @@ class ListComponent extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $listeners = [
-        "loadList" => "loadList"
-    ];
+    public $listeners = ["loadList" => '$refresh'];
 
     public $filter = [
         "search" => "",
@@ -27,10 +25,14 @@ class ListComponent extends Component
 
     public $confirmingDeleteId = false;
 
-    public function loadList()
+
+    public function mount()
     {
         $this->loadingMessage = "Loading Todos...";
+    }
 
+    public function render()
+    {
         $query = [];
 
         if (!empty($this->filter["status"])) {
@@ -53,9 +55,10 @@ class ListComponent extends Component
             $getTodoQuery = $getTodoQuery->orderBy($this->filter["order_field"], $order_type);
         }
 
-        // Paginating
-        $getTodoQuery = $getTodoQuery->paginate();
-        $this->todos = $getTodoQuery->items();
+        // Paginating;
+        $todos = $getTodoQuery->paginate();
+
+        return view('todo-module-livewire::admin.todo.list', compact('todos'));
     }
 
     public function confirmDelete($id)
@@ -65,7 +68,7 @@ class ListComponent extends Component
 
     public function delete($id)
     {
-        $todo = Todo::where('id',$id)->first();
+        $todo = Todo::where('id', $id)->first();
         if ($todo == null) {
             return [];
         }
@@ -74,13 +77,5 @@ class ListComponent extends Component
 
         $this->emitTo('todo-module-livewire.notification-component', 'flashMessage', 'error', 'Task deleted successfully.');
         $this->emitTo('todo-module-livewire.list-component', 'loadList');
-    }
-
-    public function mount(){
-        $this->loadList();
-    }
-
-    public function render() {
-        return view('todo-module-livewire::admin.todo.list');
     }
 }
