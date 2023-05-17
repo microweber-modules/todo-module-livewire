@@ -1,5 +1,10 @@
-<module type="admin/modules/info"/>
-<div class="card style-1 mb-3">
+@extends('admin::layouts.app')
+
+@section('content')
+
+<div class="mx-5">
+
+<div class="card style-1 mb-3 mt-3">
     <div class="card-header">
         <module type="admin/modules/info_module_title" for-module="todo-module-livewire" />
     </div>
@@ -15,4 +20,6 @@
         </div>
     </div>
 </div>
+</div>
 
+@endsection
